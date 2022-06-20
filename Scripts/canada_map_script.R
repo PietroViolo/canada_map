@@ -34,10 +34,12 @@ theme_map <- function(base_size=9, base_family="") {
 
 
 # Read ArcGIS shapefile downloaded from Statistic Canada website with function from rgdal package
-canada_raw <- readOGR(dsn = "./Data", layer = "lcd_000b21a_e",
-                      use_iconv=TRUE, encoding="CP1250")
+canada_raw_2021 <- readOGR(dsn = "./Data", layer = "lcd_000b21a_e")
 
 # Convert object to GeoJson format and simplify the polygons
+canada_raw <- readOGR(dsn = "./Data", layer = "gcd_000b11a_e",
+                      use_iconv=TRUE, encoding="CP1250")
+
 canada_raw_json <- geojson_json(canada_raw)
 canada_raw_sim <- ms_simplify(canada_raw_json)
 
